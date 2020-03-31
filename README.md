@@ -5,15 +5,14 @@ A fast "point(s)-in-polygon(s)" routine for <a href="http://www.mathworks.com">`
 Given a collection of polygons and a set of query points, `FINDPOLY` determines the set of enclosing polygons for each point. Arbitrary collections of polygons and query points are supported, and general non-convex and multiply-connected inputs can be handled. `FINDPOLY` employs various spatial indexing + sorting techniques, and is reasonably fast for large problems.
 
 <p align="center">
-  <img src="../master/test-data/img/us-county-sign.jpg" width="600px">
-  <img src="../master/test-data/img/us-county-tree.jpg" width="600px">
+  <img src="../master/test-data/img/us-county-sign.jpg" width="800px">
 </p>
 
 Given `K` polygons (each with `M` edges on average) the task is to find the enclosing polygons for a set of `N` query points. The (obvious) naive implementation is expensive, leading to `O(K*M*N)` complexity (based on a simple loop over all polygons, and calling a standard points-in-polygon test for each individually). This code aims to do better:
 
 * Employing a "fast" <a href="https://github.com/dengwirda/inpoly">inpolygon routine</a>, reducing the complexity of each point(s)-in-polygon test (based on spatial  sorting) to approximately `O((N+M)*log(N))`.
 
-* Employing a spatial tree (an <a href="https://github.com/dengwirda/aabb-tree">`aabb-tree`</a>) to localise each points-in-polygon query within a spatially local "tile". This typically gains another logarithmic factor, so is a big win for large `K`.
+* Employing a <a href="https://github.com/dengwirda/aabb-tree">spatial tree</a> (an `aabb-tree`) to localise each points-in-polygon query within a spatially local "tile". This typically gains another logarithmic factor, so is a big win for large `K`.
 
 ### `Quickstart`
 
