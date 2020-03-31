@@ -7,6 +7,8 @@ function polydemo
 %   Email           : darren.engwirda@columbia.edu
 %   Last updated    : 31/03/2020
 
+    addpath('mesh-file');
+
 %-------- load some test data --- the NE-US county divisions
     data = loadmsh('test-data/nec.msh');
     data = data.point.coord(:,1:2);
@@ -73,7 +75,7 @@ function polydemo
 %------------------- draw the polygons, points and aabb-tree
     cols = rand(length(edge),3) * .875 ;
 
-    figure('color','w');
+    set(figure(1),'color','w');
     drawtree(tree);
     axis image; box on;
     title('Spatial indexing');
@@ -81,7 +83,7 @@ function polydemo
     have = iptr(:,1) > 0;           % TRUE if enclosed point
     indp = indx(iptr(have,1));      % polygon indx per point
 
-    figure('color','w'); hold on;
+    set(figure(2),'color','w'); hold on;
     for kk = 1:length(edge)
     patch('faces',edge{kk},'vertices',node{kk}, ...
         'edgecolor',cols(kk,:), ...
@@ -92,7 +94,12 @@ function polydemo
     scatter(vert(~have,1), ...
             vert(~have,2),2,'k');
     axis image; box on;
-    title('Classification of points');
+    title('Classification of points') ;
+
+    set(figure(1),'units','normalized', ...
+        'position',[.05,.50,.35,.35]) ;
+    set(figure(2),'units','normalized', ...
+        'position',[.05,.05,.35,.35]) ;
 
 end
 

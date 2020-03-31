@@ -5,7 +5,7 @@ A fast "point(s)-in-polygon(s)" routine for <a href="http://www.mathworks.com">`
 Given a collection of polygons and a set of query points, `FINDPOLY` determines the set of enclosing polygons for each point. Arbitrary collections of polygons and query points are supported, and general non-convex and multiply-connected inputs can be handled. `FINDPOLY` employs various spatial indexing + sorting techniques, and is reasonably fast for large problems.
 
 <p align="center">
-  <img src="../master/test-data/img/us-county-sign.jpg" width="800px">
+  <img src="../master/test-data/img/us-county-sign.jpg" width="900px">
 </p>
 
 Given `K` polygons (each with `M` edges on average) the task is to find the enclosing polygons for a set of `N` query points. The (obvious) naive implementation is expensive, leading to `O(K*M*N)` complexity (based on a simple loop over all polygons, and calling a standard points-in-polygon test for each individually). This code aims to do better:
