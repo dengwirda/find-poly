@@ -35,7 +35,7 @@ function [ip,ix,tr] = findpoly(pp,ee,pj,varargin)
 %   = FINDPOLY(PP,EE,PI,TR,OP). See MAKETREE for additional 
 %   information.
 %
-%   See also MAKETREE, QUERYSET
+%   See also MAKETREE, EXCHANGE, QUERYSET
 
 %   Given K polygons (each with M edges on average) the task 
 %   is to find the enclosing polygons for a set of N points.
