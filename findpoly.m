@@ -72,6 +72,7 @@ function [ip,ix,tr] = findpoly(pp,ee,pj,varargin)
     end
 
 %------------------------------- fast return on empty inputs
+    if (isempty(pp)), return; end
     if (isempty(pj)), return; end
 
 %------------------------------- extract user-defined inputs
